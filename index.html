@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Alaa 🐱🎂</title>
 
-  <!-- Google Fonts (fixed link) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -18,7 +18,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px; /* ✅ mobile safe padding */
+      padding: 20px;
     }
 
     .page {
@@ -26,9 +26,9 @@
       background: #ffffffcc;
       backdrop-filter: blur(10px);
       border-radius: 30px;
-      padding: 32px 22px; /* ✅ better mobile spacing */
+      padding: 32px 22px;
       width: 100%;
-      max-width: 380px; /* ✅ fits phone screens better */
+      max-width: 380px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.1);
       animation: fade 0.6s ease;
@@ -55,27 +55,35 @@
       font-size: 2.4rem;
       margin-bottom: 10px;
     }
+
     h2 {
       font-size: 1.2rem;
       color: #6b7280;
       margin-bottom: 20px;
     }
+
+    /* 🌸 BETTER CENTERED MESSAGE */
     p {
       color: #4b5563;
       font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 25px;
+      line-height: 1.8;
+      margin: 0 auto 25px auto;
+      max-width: 300px;
+      text-align: center;
     }
+
     .cat {
       font-size: 5rem;
       margin: 20px 0;
       animation: float 3s ease-in-out infinite;
     }
+
     @keyframes float {
       0% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
       100% { transform: translateY(0); }
     }
+
     button {
       background: linear-gradient(135deg, #ffb3c6, #a0e7e5);
       border: none;
@@ -87,25 +95,9 @@
       cursor: pointer;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-
-    .dots {
-      margin-top: 20px;
-      text-align: center;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-    .dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fbcfe8;
-      margin: 0 4px;
-    }
-    .dot.active { background: #ff8fab; }
   </style>
 </head>
+
 <body>
 
   <!-- PAGE 1 -->
@@ -115,26 +107,19 @@
     <div class="cat">🐱</div>
 
     <p>
-      To unlock the next page, please enter your <strong>birthday date number</strong> 🎂
+      To unlock the next page, please enter your
+      <strong>birthday date number</strong> 🎂
     </p>
 
-    <input type="number" id="birthdayCode" placeholder="Enter number" style="
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 2px solid #fbcfe8;
-      font-size: 1rem;
-      text-align: center;
-      width: 160px;
-      margin-bottom: 15px;" />
+    <input type="number" id="birthdayCode" placeholder="Enter number"
+      style="padding:10px 16px;border-radius:999px;border:2px solid #fbcfe8;
+      font-size:1rem;text-align:center;width:160px;margin-bottom:15px;" />
 
-    <p id="error" style="color:#ef4444; font-size:0.85rem; display:none;">❌ Wrong number, try again!</p>
+    <p id="error" style="color:#ef4444;font-size:0.85rem;display:none;">
+      ❌ Wrong number, try again!
+    </p>
 
     <button onclick="checkCode()">Unlock ➜</button>
-
-    <!-- AUDIO (preloaded & user-triggered) -->
-    <audio id="meowSound" preload="auto">
-      <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c3cfc9c6e.mp3" type="audio/mpeg">
-    </audio>
 
     <audio id="bgMusic" preload="auto" loop>
       <source src="https://cdn.pixabay.com/audio/2022/10/26/audio_8b0d9b7a8c.mp3" type="audio/mpeg">
@@ -146,13 +131,16 @@
     <h1>Happy Birthday!</h1>
     <h2>From your best friend Haneen 🎂</h2>
     <div class="cat">🐱🎉</div>
+
     <p>
       May your birthday this year bring you lots of happiness.<br>
       May you always be surrounded by positive energy, and may success be waiting ahead of you.<br>
       Don’t give up even when you face hardships — remember there are people who care about you.<br>
-      Keep smiling.<br><br>
-      <strong>Love you ✨</strong>
+      Keep smiling.
+      <br><br>
+      <strong style="font-size:1.1rem;">Love you ✨</strong>
     </p>
+
     <button onclick="nextPage(3)">Next ➜</button>
   </div>
 
@@ -161,18 +149,13 @@
     <h1>One Last Thing…</h1>
     <h2>Thank you for being my friend 💗</h2>
     <div class="cat">🐱💖</div>
+
     <p>
       You are appreciated, loved, and cherished more than you know.
       I hope you have the cutest birthday ever 🌸
     </p>
-    <button onclick="nextPage(1)">Restart ♡</button>
-  </div>
 
-  <!-- DOTS -->
-  <div class="dots">
-    <span class="dot active" id="dot1"></span>
-    <span class="dot" id="dot2"></span>
-    <span class="dot" id="dot3"></span>
+    <button onclick="nextPage(1)">Restart ♡</button>
   </div>
 
 <script>
@@ -189,7 +172,7 @@
   }
 
   function checkCode() {
-    startMusic(); // 🎵 starts music on first tap
+    startMusic();
 
     const input = document.getElementById('birthdayCode').value;
     const error = document.getElementById('error');
@@ -206,13 +189,9 @@
   }
 
   function nextPage(num) {
-    startMusic(); // 🎵 keeps music playing
-
+    startMusic();
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
-
     document.getElementById('page' + num).classList.add('active');
-    document.getElementById('dot' + num).classList.add('active');
   }
 </script>
 
